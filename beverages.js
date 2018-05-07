@@ -25,9 +25,6 @@ var beverageProto = {
         return this._volume
     }
 }
-
-var water = Object.create(beverageProto);
-
 var alcoholProto = Object.create(beverageProto);
 alcoholProto.getName = function () {
     return this._name.toUpperCase();
@@ -48,3 +45,24 @@ tequila.getName = function () {
 }
 console.log(tequila.getStrength());
 console.log(tequila.getName());
+
+// Начало Д/З
+
+var coctailProto = Object.create(alcoholProto);
+coctailProto.setIngredients = function(arr) {
+    this.ingredients = arr;
+}
+coctailProto.getIngredients = function() {
+    return this.ingredients;
+}
+
+var b52 = Object.create(coctailProto);
+b52.setIngredients(['coffee liqueur', 'liquor triple sec', 'ayrish krim'])
+b52.setStrength(30);
+console.log(b52.getStrength());
+console.log(b52.getIngredients());
+
+var nonAlcoholProto = Object.create(beverageProto)
+var water = Object.create(nonAlcoholProto);
+water.setName('water');
+console.log(water.getName())
